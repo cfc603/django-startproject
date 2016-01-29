@@ -58,7 +58,7 @@ def copy_template_file(src, dest, replace=None):
 
     # Generate SECRET_KEY for settings file
     secret_key = ''.join([choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
-    data = re.sub(r"(?<=SECRET_KEY = ')'", secret_key + "'", data)
+    data = re.sub(r'(?<="SECRET_KEY": ")"', secret_key + '"', data)
 
     # Write the data to the destination file.
     dest_file = open(dest, 'w')
