@@ -6,9 +6,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [STAGING_URL,]
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+# Database settings
 if 'test' in sys.argv:
     DATABASES = {
         'default': {
