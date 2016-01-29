@@ -84,5 +84,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(BASE_DIR.parent + '/media')
 
 
-STAGING_URL = ''
+STAGING_URL = 'myproject-staging.trevorwatson.me'
 PRODUCTION_URL = ''

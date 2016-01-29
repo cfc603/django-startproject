@@ -18,9 +18,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': '',
-            'USER': '',
+            'NAME': 'cfc$myproject',
+            'USER': 'myproject',
             'PASSWORD': get_secrets('DATABASE_PASS_STAGING'),
-            'HOST': '',
+            'HOST': 'cfc.mysql.pythonanywhere-services.com',
         }
     }
