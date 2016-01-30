@@ -2,14 +2,14 @@ from setuptools import setup
 import os
 
 
-README_FILE = open('README')
+README_FILE = open('README.md')
 try:
     LONG_DESCRIPTION = README_FILE.read()
 finally:
     README_FILE.close()
 
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
-DATA_DIR = os.path.join(ROOT_DIR, 'django_startproject', 'project_template')
+DATA_DIR = os.path.join(ROOT_DIR, 'django_startproject_template', 'project_template')
 STARTPROJECT_DATA = []
 for path, dirs, filenames in os.walk(DATA_DIR):
     # Ignore directories that start with '.'
@@ -22,14 +22,14 @@ for path, dirs, filenames in os.walk(DATA_DIR):
     STARTPROJECT_DATA.append(os.path.join('project_template', path, '.*'))
 
 
-setup(name='django-startproject',
+setup(name='django-startproject-template',
       version='0.1',
       author='Trevor Watson',
       author_email='trevor@trevorwatson.me',
       description=('Create a modified Django project layout'),
       long_description=LONG_DESCRIPTION,
-      packages=['django_startproject'],
-      package_data={'django_startproject': STARTPROJECT_DATA},
+      packages=['django_startproject_template'],
+      package_data={'django_startproject_template': STARTPROJECT_DATA},
       scripts=['bin/django-startproject.py'],
       classifiers=[
           'Development Status :: 2 - Pre-Alpha',

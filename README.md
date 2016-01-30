@@ -1,4 +1,4 @@
-# django-startproject
+# django-startproject-template
 
 A modified "django-admin startproject" command using a custom template.
 
@@ -6,7 +6,7 @@ A modified "django-admin startproject" command using a custom template.
 
 ###### Install django-startproject-template
 ```
-$ pip install git+git://github.com/cfc603/django-startproject.git#egg=django-startproject
+$ pip install git+git://github.com/cfc603/django-startproject-template.git#egg=django-startproject-template
 ```
 
 ###### run startproject
