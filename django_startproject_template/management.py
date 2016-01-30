@@ -1,4 +1,4 @@
-from django_startproject import utils
+from django_startproject_template import utils
 import optparse
 import os
 import sys
