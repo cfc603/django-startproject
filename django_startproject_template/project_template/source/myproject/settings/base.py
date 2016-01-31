@@ -45,6 +45,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'myproject.urls'
 
+SECRET_KEY = get_secrets('SECRET_KEY')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
