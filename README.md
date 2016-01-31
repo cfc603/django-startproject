@@ -33,7 +33,24 @@ $ nano $VIRTUAL_ENV/bin/postactivate
 ```shell
 #!/bin/bash
 # This hook is sourced after this virtualenv is activated.
-export DJANGO_SETTINGS_MODULE='myapp.settings.local'
+export DJANGO_SETTINGS_MODULE='project_name.settings.local'
+```
+
+###### initialize repo
+```
+$ cd project_name/source/
+$ git init
+```
+
+###### install project requirements
+```
+$ pip install -r requirements.txt
+```
+
+###### uninstall django-startproject-template
+django-startproject-template is no longer needed at this point, including when project is launched to development or production servers.
+```
+$ pip uninstall django-startproject-template
 ```
 
 ## Using a custom project template
