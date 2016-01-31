@@ -4,12 +4,19 @@ A modified "django-admin startproject" command using a custom template.
 
 ## Usage
 
+###### Setup virtual enviroment
+```
+$ mkvirtualenv project_name
+```
+
 ###### Install django-startproject-template
 ```
 $ pip install git+git://github.com/cfc603/django-startproject-template.git#egg=django-startproject-template
 ```
 
 ###### run startproject
+
+django-startproject-template sets up the entire folder structure. Just move into the directory you would like create the project, then:
 ```
 $ django-startproject.py project_name
 ```
