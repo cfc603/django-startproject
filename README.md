@@ -47,6 +47,11 @@ $ git init
 $ pip install -r requirements.txt
 ```
 
+Set Django version installed:
+```
+$ pip freeze > requirements.txt
+```
+
 ###### uninstall django-startproject-template
 django-startproject-template is no longer needed at this point, including when project is launched to development or production servers.
 ```
