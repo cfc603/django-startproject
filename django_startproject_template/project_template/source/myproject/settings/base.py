@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 # Full filesystem path to the project.
-PROJECT_APP_PATH = Path(__file__).absolute().parent
+PROJECT_APP_PATH = Path(__file__).ancestor(2)
 PROJECT_APP = PROJECT_APP_PATH.name
 PROJECT_ROOT = BASE_DIR = PROJECT_APP_PATH.parent
 
