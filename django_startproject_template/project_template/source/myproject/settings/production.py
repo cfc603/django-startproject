@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [PRODUCTION_URL, ]
+ALLOWED_HOSTS = []
 
 # Database
 DATABASES = {
@@ -14,5 +14,3 @@ DATABASES = {
         'HOST': 'salesranktable.mysql.pythonanywhere-services.com',
     }
 }
-
-# SECURE_SSL_REDIRECT = True

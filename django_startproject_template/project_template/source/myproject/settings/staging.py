@@ -4,7 +4,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [STAGING_URL,]
+ALLOWED_HOSTS = []
 
 # Database settings
 if 'test' in sys.argv:
