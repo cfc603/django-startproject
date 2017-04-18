@@ -4,7 +4,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [STAGING_URL,]
+ALLOWED_HOSTS = []
 
 # Database settings
 if 'test' in sys.argv:
@@ -18,9 +18,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'cfc$myproject',
-            'USER': 'myproject',
+            'NAME': 'staging_myproject',
+            'USER': 'staging_myproject',
             'PASSWORD': get_secrets('DATABASE_PASS_STAGING'),
-            'HOST': 'cfc.mysql.pythonanywhere-services.com',
+            'HOST': 'localhost',
         }
     }
