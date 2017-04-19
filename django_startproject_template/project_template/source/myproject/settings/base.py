@@ -78,7 +78,7 @@ SITE_ID = 1
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [Path(BASE_DIR, 'test_django/templates'),],
+        'DIRS': [Path(BASE_DIR, 'myproject/templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
