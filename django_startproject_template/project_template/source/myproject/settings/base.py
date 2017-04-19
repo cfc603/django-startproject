@@ -24,15 +24,35 @@ def get_secrets(setting, secrets=secrets):
 # Application definition
 
 INSTALLED_APPS = [
+    'djangocms_admin_style', # must be before 'django.contrib.admin'
+
+    # django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
+
+    # django cms apps
+    'cms',
+    'djangocms_text_ckeditor',
+    'easy_thumbnails',
+    'filer',
+    'menus',
+    'mptt',
+    'sekizai',
+    'treebeard',
+
+    # local apps
+
 ]
 
 MIDDLEWARE = [
+
+    'cms.middleware.utils.ApphookReloadMiddleware', # needs to be before
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -40,16 +60,25 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # django cms
+    'django.middleware.locale.LocaleMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
 
 SECRET_KEY = get_secrets('SECRET_KEY')
 
+SITE_ID = 1
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [Path(BASE_DIR, 'test_django/templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -57,6 +86,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # django cms processor
+                'cms.context_processors.cms_settings',
+                'sekizai.context_processors.sekizai',
             ],
         },
     },
@@ -102,3 +135,22 @@ STATIC_ROOT = Path(BASE_DIR.parent + '/static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(BASE_DIR.parent + '/media')
+
+
+# django cms settings
+CMS_TEMPLATES = [
+    ('cms/default.html', 'Default page template'),
+]
+
+LANGUAGES = [
+    ('en', 'English'),
+]
+
+THUMBNAIL_HIGH_RESOLUTION = True
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+)
