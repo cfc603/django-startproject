@@ -5,11 +5,13 @@ A modified "django-admin startproject" command using a custom template.
 ## Usage
 
 ###### Setup virtual enviroment
+
 ```
 $ mkvirtualenv project_name
 ```
 
 ###### Install django-startproject-template
+
 ```
 $ pip install git+git://github.com/cfc603/django-startproject-template.git#egg=django-startproject-template
 ```
@@ -24,38 +26,75 @@ The script will prompt for values to replace boilerplate variables with. These
 variables allow for both the file contents and path names to be customized to
 this specific project.
 
+###### uninstall django-startproject-template
+
+django-startproject-template is no longer needed
+```
+$ pip uninstall django-startproject-template
+```
+
 ###### set environment variable 'DJANGO_SETTINGS_MODULE':
 
 *(assuming use with virtualenvwrapper)*
 ```
-$ nano $VIRTUAL_ENV/bin/postactivate
+$ subl $VIRTUAL_ENV/bin/postactivate
 ```
 ```shell
 #!/bin/bash
 # This hook is sourced after this virtualenv is activated.
 export DJANGO_SETTINGS_MODULE='project_name.settings.local'
+export PROJECT_DIR=/home/trevor/projects/project_name/source
+
+```
+```
+$ source $VIRTUAL_ENV/bin/postactivate
 ```
 
 ###### initialize repo
+
 ```
-$ cd project_name/source/
+$ cd $PROJECT_DIR
 $ git init
 ```
 
 ###### install project requirements
+
 ```
 $ pip install -r requirements.txt
 ```
 
-Set Django version installed:
+Set versions installed:
+
 ```
 $ pip freeze > requirements.txt
 ```
 
-###### uninstall django-startproject-template
-django-startproject-template is no longer needed at this point, including when project is launched to development or production servers.
+###### add repo to GitHub
+
+[Create a new repository](https://github.com/new) with project_name
+
 ```
-$ pip uninstall django-startproject-template
+$ git add .
+$ git commit -m "init"
+$ git remote add origin git@github.com:cfc603/project_name.git
+$ git push -u origin master
+```
+
+##### create local database
+
+```
+$ mysql -u admin -p
+```
+
+```SQL
+CREATE DATABASE project_name;
+exit
+```
+
+##### migrate database
+
+```
+$ ./manage.py migrate
 ```
 
 ## Using a custom project template

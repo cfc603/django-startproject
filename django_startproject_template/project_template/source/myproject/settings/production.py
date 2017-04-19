@@ -8,11 +8,9 @@ ALLOWED_HOSTS = [PRODUCTION_URL, ]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'salesranktable$myproject',
-        'USER': 'salesranktable',
+        'NAME': 'myproject',
+        'USER': 'myproject',
         'PASSWORD': get_secrets('DATABASE_PASS_PRODUCTION'),
-        'HOST': 'salesranktable.mysql.pythonanywhere-services.com',
+        'HOST': 'localhost',
     }
 }
-
-# SECURE_SSL_REDIRECT = True
