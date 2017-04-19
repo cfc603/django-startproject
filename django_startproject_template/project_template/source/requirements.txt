@@ -1,3 +1,9 @@
-Django>=1.11,<2.0
+# default packages
+Django>=1.10,<1.11
 Unipath
 mysqlclient
+
+# django cms packages
+django-cms
+django-filer
+djangocms-text-ckeditor
