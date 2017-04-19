@@ -97,6 +97,12 @@ exit
 $ ./manage.py migrate
 ```
 
+##### run cms check
+
+```
+$ ./manage.py cms check
+```
+
 ## Using a custom project template
 
 If you would prefer to use a custom project template than the one included in
