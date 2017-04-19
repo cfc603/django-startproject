@@ -13,7 +13,7 @@ $ mkvirtualenv project_name
 ###### Install django-startproject-template
 
 ```
-$ pip install git+git://github.com/cfc603/django-startproject-template.git#egg=django-startproject-template
+$ pip install git+git://github.com/cfc603/django-startproject-template.git@django-cms#egg=django-startproject-template
 ```
 
 ###### run startproject
