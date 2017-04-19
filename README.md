@@ -5,11 +5,13 @@ A modified "django-admin startproject" command using a custom template.
 ## Usage
 
 ###### Setup virtual enviroment
+
 ```
 $ mkvirtualenv project_name
 ```
 
 ###### Install django-startproject-template
+
 ```
 $ pip install git+git://github.com/cfc603/django-startproject-template.git#egg=django-startproject-template
 ```
@@ -25,6 +27,7 @@ variables allow for both the file contents and path names to be customized to
 this specific project.
 
 ###### uninstall django-startproject-template
+
 django-startproject-template is no longer needed
 ```
 $ pip uninstall django-startproject-template
@@ -48,17 +51,20 @@ $ source $VIRTUAL_ENV/bin/postactivate
 ```
 
 ###### initialize repo
+
 ```
 $ cd $PROJECT_DIR
 $ git init
 ```
 
 ###### install project requirements
+
 ```
 $ pip install -r requirements.txt
 ```
 
 Set versions installed:
+
 ```
 $ pip freeze > requirements.txt
 ```
@@ -75,6 +81,7 @@ $ git push -u origin master
 ```
 
 ##### create local database
+
 ```
 $ mysql -u admin -p
 ```
@@ -85,6 +92,7 @@ exit
 ```
 
 ##### migrate database
+
 ```
 $ ./manage.py migrate
 ```
