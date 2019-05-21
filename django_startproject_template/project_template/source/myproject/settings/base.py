@@ -1,16 +1,18 @@
-import json
+from json import loads
 from unipath import Path
 
 from django.core.exceptions import ImproperlyConfigured
 
 
 # Build paths inside the project like this: Path(BASE_DIR, ...)
-BASE_DIR = Path(__file__).ancestor(3)
+PROJECT_DIR = Path(__file__).ancestor(2)
+BASE_DIR = PROJECT_DIR.parent
+DATA_DIR = Path(BASE_DIR.parent, 'data')
 
 
 # get secrets from json file
 with open(Path(BASE_DIR.parent + '/secrets/secrets.json')) as f:
-    secrets = json.loads(f.read())
+    secrets = loads(f.read())
 
 def get_secrets(setting, secrets=secrets):
     """Get setting variable or return exception"""
@@ -21,15 +23,24 @@ def get_secrets(setting, secrets=secrets):
         raise ImproperlyConfigured
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = get_secrets('SECRET_KEY')
+
+
 # Application definition
 
 INSTALLED_APPS = [
+    # django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # local
+
+    # third party
 ]
 
 MIDDLEWARE = [
@@ -44,12 +55,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myproject.urls'
 
-SECRET_KEY = get_secrets('SECRET_KEY')
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [Path(PROJECT_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,7 +75,6 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
 # Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -85,6 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -97,8 +106,12 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
-STATIC_ROOT = Path(BASE_DIR.parent + '/static')
 
-MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(BASE_DIR.parent + '/media')
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    Path(PROJECT_DIR, 'static'),
+]
+STATIC_ROOT = Path(BASE_DIR.parent + '/static')
+STATIC_URL = '/static/'
