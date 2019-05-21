@@ -41,7 +41,7 @@ def start_project():
             prompt = '%s: ' % help
         value = None
         while not value:
-            value = raw_input(prompt) or default
+            value = input(prompt) or default
         replace[var] = value
 
     utils.copy_template(src, dest, replace)
