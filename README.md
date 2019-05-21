@@ -4,10 +4,16 @@ A modified "django-admin startproject" command using a custom template.
 
 ## Usage
 
+###### Activate Python 3.6.0
+
+```
+$ pyenv shell 3.6.0
+```
+
 ###### Setup virtual enviroment
 
 ```
-$ mkvirtualenv project_name
+$ mkproject project_name
 ```
 
 ###### Install django-startproject-template
@@ -33,27 +39,10 @@ django-startproject-template is no longer needed
 $ pip uninstall django-startproject-template
 ```
 
-###### set environment variable 'DJANGO_SETTINGS_MODULE':
-
-*(assuming use with virtualenvwrapper)*
-```
-$ subl $VIRTUAL_ENV/bin/postactivate
-```
-```shell
-#!/bin/bash
-# This hook is sourced after this virtualenv is activated.
-export DJANGO_SETTINGS_MODULE='project_name.settings.local'
-export PROJECT_DIR=/home/trevor/projects/project_name/source
-
-```
-```
-$ source $VIRTUAL_ENV/bin/postactivate
-```
-
 ###### initialize repo
 
 ```
-$ cd $PROJECT_DIR
+$ cd source
 $ git init
 ```
 
@@ -88,6 +77,7 @@ $ mysql -u admin -p
 
 ```SQL
 CREATE DATABASE project_name;
+GRANT ALL PRIVILEGES on project_name.* TO 'dev'@'localhost';
 exit
 ```
 
